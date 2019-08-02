@@ -11,6 +11,8 @@ Each primitive uses one of two possible materials. They both only have Base Colo
 | :---: | :---: |
 | Material 0 With Base Color Factor | [0.0,&nbsp;1.0,&nbsp;0.0,&nbsp;1.0] |
 | Material 1 With Base Color Factor | [0.0,&nbsp;0.0,&nbsp;1.0,&nbsp;1.0] |
+| Material 1 With Base Color Factor | [1.0,&nbsp;1.0,&nbsp;1.0,&nbsp;1.0] |
+| Material 1 With Base Color Factor | [0.0,&nbsp;0.0,&nbsp;0.0,&nbsp;0.0] |
 
 
 <br>
@@ -26,4 +28,5 @@ The following table shows the properties that are set for a given model.
 |   | Sample Image | Primitive 0 | Primitive 1 |
 | :---: | :---: | :---: | :---: |
 | [00](Mesh_Primitives_00.gltf)<br>[View](https://bghgary.github.io/glTF-Assets-Viewer/?type=Positive&folder=17&model=0) | [<img src="Figures/Thumbnails/Mesh_Primitives_00.png" align="middle">](Figures/SampleImages/Mesh_Primitives_00.png) | Material 0 | Material 1 |
+| [01](Mesh_Primitives_01.gltf)<br>[View](https://bghgary.github.io/glTF-Assets-Viewer/?type=Positive&folder=17&model=1) | [<img src="Figures/Thumbnails/Mesh_Primitives_01.png" align="middle">](Figures/SampleImages/Mesh_Primitives_01.png) | Material 0 | Material 1 |
  

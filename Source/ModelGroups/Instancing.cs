@@ -463,6 +463,8 @@ namespace AssetGenerator
                     properties.Add(new Property(PropertyName.Description, "Two animation samplers using the same output accessors."));
                     properties.Add(new Property(PropertyName.Difference, "The two animation samplers have different input values."));
                 }, (model) => { model.Camera = distantCamera; }),
+                // New model
+               
                 // To be implemented later. Needs to work as a type of interleaving.
                 //CreateModel((properties, nodes, animations) =>
                 //{

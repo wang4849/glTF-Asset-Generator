@@ -41,6 +41,7 @@ namespace AssetGenerator
                 new Material(imageList),
                 new Material_AlphaBlend(imageList),
                 new Material_AlphaMask(imageList),
+                new Material_AlphaMaskTraining(imageList),
                 new Material_DoubleSided(imageList),
                 new Material_MetallicRoughness(imageList),
                 new Material_Mixed(imageList),

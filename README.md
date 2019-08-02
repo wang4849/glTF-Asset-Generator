@@ -17,6 +17,7 @@ This project covers these requirements, with more to come:
 - [Material](Output/Positive/Material/README.md)
 - [Material Alpha Blend](Output/Positive/Material_AlphaBlend/README.md)
 - [Material Alpha Mask](Output/Positive/Material_AlphaMask/README.md)
+- [Material Alpha Mask Training](Output/Positive/Material_AlphaMaskTraining/README.md)
 - [Material Double Sided](Output/Positive/Material_DoubleSided/README.md)
 - [Material Metallic Roughness](Output/Positive/Material_MetallicRoughness/README.md)
 - [Material Mixed](Output/Positive/Material_Mixed/README.md)

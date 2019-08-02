@@ -16,8 +16,12 @@ namespace AssetGenerator
             // Track the common properties for use in the readme.
             var baseColorFactorGreen = new Vector4(0.0f, 1.0f, 0.0f, 1.0f);
             var baseColorFactorBlue = new Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+            var baseColorFactorWhite = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+            var baseColorFactorBlack = new Vector4(0.0f, 0.0f, 0.0f, 0.0f);
             CommonProperties.Add(new Property(PropertyName.Material0WithBaseColorFactor, baseColorFactorGreen));
             CommonProperties.Add(new Property(PropertyName.Material1WithBaseColorFactor, baseColorFactorBlue));
+            CommonProperties.Add(new Property(PropertyName.Material1WithBaseColorFactor, baseColorFactorWhite));
+            CommonProperties.Add(new Property(PropertyName.Material1WithBaseColorFactor, baseColorFactorBlack));
 
             Model CreateModel(Action<List<Property>, Runtime.MeshPrimitive, Runtime.MeshPrimitive> setProperties)
             {
@@ -72,6 +76,32 @@ namespace AssetGenerator
 
                 properties.Add(new Property(PropertyName.Primitive1, "Material 1"));
             }
+            // New color
+            void SetPrimitiveZeroWhite(List<Property> properties, Runtime.MeshPrimitive meshPrimitive)
+            {
+                meshPrimitive.Material = new Runtime.Material
+                {
+                    MetallicRoughnessMaterial = new Runtime.PbrMetallicRoughness
+                    {
+                        BaseColorFactor = baseColorFactorWhite
+                    }
+                };
+
+                properties.Add(new Property(PropertyName.Primitive0, "Material 0"));
+            }
+
+            void SetPrimitiveOneBlack(List<Property> properties, Runtime.MeshPrimitive meshPrimitive)
+            {
+                meshPrimitive.Material = new Runtime.Material
+                {
+                    MetallicRoughnessMaterial = new Runtime.PbrMetallicRoughness
+                    {
+                        BaseColorFactor = baseColorFactorBlack
+                    }
+                };
+
+                properties.Add(new Property(PropertyName.Primitive1, "Material 1"));
+            }
 
             Models = new List<Model>
             {
@@ -79,6 +109,12 @@ namespace AssetGenerator
                 {
                     SetPrimitiveZeroGreen(properties, meshPrimitiveZero);
                     SetPrimitiveOneBlue(properties, meshPrimitiveOne);
+                }),
+                // New model
+                CreateModel((properties, meshPrimitiveZero, meshPrimitiveOne) =>
+                {
+                    SetPrimitiveZeroWhite(properties, meshPrimitiveZero);
+                    SetPrimitiveOneBlack(properties, meshPrimitiveOne);
                 }),
             };
 

@@ -264,6 +264,51 @@ namespace AssetGenerator
                 SetLinearSamplerForHorizontalRotation(channels[0]);
                 SetLinearSamplerForVerticalRotation(channels[1]);
             }
+            
+            void SetNewRotation(Runtime.AnimationChannel channel)
+            {
+                channel.Sampler = new Runtime.LinearAnimationSampler<Quaternion>
+                (
+                    new[]
+                    {
+                        0.0f,
+                        1.0f,
+                        2.0f,
+                        3.0f,
+                        4.0f,
+                        5.0f,
+                        6.0f,
+                        7.0f,
+                        8.0f,
+                        9.0f,
+                        10.0f,
+                        11.0f,
+                        12.0f,
+                        13.0f,
+                        14.0f,
+                        15.0f,                                                                                               
+                    },
+                    new[]
+                    {                        
+                        Quaternion.CreateFromYawPitchRoll(0.0f, FloatMath.ToRadians(0.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(0.0f, FloatMath.ToRadians(0.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(0.0f, FloatMath.ToRadians(90.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(0.0f, FloatMath.ToRadians(90.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(0.0f, FloatMath.ToRadians(180.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(0.0f, FloatMath.ToRadians(180.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(0.0f, FloatMath.ToRadians(-90.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(0.0f, FloatMath.ToRadians(-90.0f), 0.0f),
+                        Quaternion.Identity,
+                        Quaternion.CreateFromYawPitchRoll(FloatMath.ToRadians(0.0f), FloatMath.ToRadians(0.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(FloatMath.ToRadians(90.0f), FloatMath.ToRadians(0.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(FloatMath.ToRadians(90.0f), FloatMath.ToRadians(0.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(FloatMath.ToRadians(180.0f), FloatMath.ToRadians(0.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(FloatMath.ToRadians(180.0f), FloatMath.ToRadians(0.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(FloatMath.ToRadians(-90.0f), FloatMath.ToRadians(0.0f), 0.0f),
+                        Quaternion.CreateFromYawPitchRoll(FloatMath.ToRadians(-90.0f), FloatMath.ToRadians(0.0f), 0.0f),                     
+                    }
+                );
+            }
 
             Models = new List<Model>
             {
@@ -357,9 +402,16 @@ namespace AssetGenerator
 
                     properties.Add(new Property(PropertyName.Description,
                         "There are two channels. The first channel has a rotation along the X axis but does not specify a node. The second channel does target the node and has a rotation along the Y axis."));
+                }),                         
+                CreateModel((properties, channels, nodes, animations) =>
+                {
+                    // Model that animates to show each face of the cube, stopping for 1 sec on each face.
+                    SetRotationChannelTarget(channels[0], nodes[0]);
+                    SetNewRotation(channels[0]);                                   
+                    properties.Add(new Property(PropertyName.Description,
+                        "There is one channel. First it has a vertical rotation, and then a horizontal rotation. It stops 1 second on each face."));
                 }),
-            };
-
+            };                
             GenerateUsedPropertiesList();
         }
     }
